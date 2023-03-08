@@ -38,7 +38,6 @@ class qtApp(QWidget):
         else:
             api = NaverApi() # NaverAPI 클래스 객체 생성
             node = 'news'    # movie로 변경하면 영화검색
-            ouputs = []      # 결과 담을 리스트 변수
             display = 100
 
             result = api.get_naver_search(node, search, 1, display)
@@ -78,10 +77,6 @@ class qtApp(QWidget):
         # 변환 안된 특수문자 나타나면 추가
 
         return result
-
-        
-
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
