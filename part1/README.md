@@ -11,7 +11,16 @@
   - Naver OpenAPI
 
 ![네이버뉴스앱](https://raw.githubusercontent.com/LaniJeong/miniprojects/a9084e266bcfa7acdd1a6c1d70b3d5ec4b821138/part1/KakaoTalk_20230308_111503131_01.png)
-<img sre ="https://raw.githubusercontent.com/LaniJeong/miniprojects/a9084e266bcfa7acdd1a6c1d70b3d5ec4b821138/part1/KakaoTalk_20230308_111503131_01.png" width="800" />
+<img srㅊ ="https://raw.githubusercontent.com/LaniJeong/miniprojects/a9084e266bcfa7acdd1a6c1d70b3d5ec4b821138/part1/KakaoTalk_20230308_111503131_01.png" width="780" />
+
+- Naver API 영화검색 앱 만들기
+  - Python 3.11.2
+  - PyQt5
+  - Qt Designer
+  - Naver OpenAPI
+  - Urllib.request.urlopen 이미지 다운로드 사용
+
+![네이버영화앱]<img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/a9084e266bcfa7acdd1a6c1d70b3d5ec4b821138/part1/KakaoTalk_20230309_103100147.png" width="780" />
 
 ## DB 연동 GUI 개발 학습
 
