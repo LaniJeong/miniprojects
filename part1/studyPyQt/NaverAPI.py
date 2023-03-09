@@ -7,7 +7,7 @@ import json         # 결과는 json으로
 class NaverApi:
     # 생성자
     def __init__(self) -> None:
-        print(f'[{datetime.datetime.now()}]Naver API 생성')
+        print(f'[{datetime.datetime.now()}] Naver API 생성')
 
     # Naver APi 호출 함수
     def get_request_url(self, url):

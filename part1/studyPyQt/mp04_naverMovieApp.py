@@ -4,7 +4,6 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from NaverAPI import NaverApi
-from urllib.request import urlopen
 import webbrowser   # 웹브라우저 모듈
 
 
@@ -19,16 +18,13 @@ class qtApp(QWidget):
         # 검색어 입력 후 엔터를 치면 처리
         self.txtSearch.returnPressed.connect(self.txtSearchReturned)
         self.tblResult.doubleClicked.connect(self.tblResultDoubleClicked)       # 더블 클릭했을때
-    
-    def tblResultDoubleClicked(self):
-        selected = self.tblResult.currentRow()
-        url = self.tblResult.item(selected, 5).text()       # url 링크컬럼 변경
-        webbrowser.open(url)   # 네이버 영화 웹
 
+    def txtSearchReturned(self):
+        self.btnSearchClicked()
 
     def btnSearchClicked(self):
         search = self.txtSearch.text()
-
+    
         if search == '':
             QMessageBox.warning(self, '경고', '영화명을 입력하세요!')
             return
@@ -37,18 +33,18 @@ class qtApp(QWidget):
             node = 'movie'    # movie로 변경하면 영화검색
             display = 100
 
-    def txtSearchReturned(self):
-        self.btnSearchClicked()
 
         result = api.get_naver_search(node, search, 1, display)
             # print(result)
             # 리스트뷰에서 출력
-        while result != None and result['display'] != 0:
-            for post in result['items']:    # 100개의 post
-                api.get_post_data(post, outputs)
 
-            items = result['items'] # json결과 중 items 아래 배열만 추출
-            self.makeTable(items)   # 테이블위젯에 데이터들을 할당 함수
+        items = result['items'] # json결과 중 items 아래 배열만 추출
+        self.makeTable(items)   # 테이블위젯에 데이터들을 할당 함수
+        
+    def tblResultDoubleClicked(self):
+        selected = self.tblResult.currentRow()
+        url = self.tblResult.item(selected, 5).text()       # url 링크컬럼 변경
+        webbrowser.open(url)   # 네이버 영화 웹
 
     # 테이블 위젯에 데이터 표시 -- 네이버 영화 결과에 맞춰
     def makeTable(self, items) -> None:
@@ -88,6 +84,7 @@ class qtApp(QWidget):
                 # f.write(data)
                 # f.close()
 
+            # setItem(행, 열, 넣을 데이터)
             self.tblResult.setItem(i, 0, QTableWidgetItem(title))
             self.tblResult.setItem(i, 1, QTableWidgetItem(pubDate))        # link넣기
             self.tblResult.setItem(i, 2, QTableWidgetItem(director))        # link넣기
