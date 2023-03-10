@@ -93,13 +93,13 @@ class qtApp(QMainWindow):
                                 , PhoneNum = %s
                                 , Email = %s
                                 , Address =%s
-                            WHERE Idx = %d'''
+                            WHERE Idx = %s'''
 
             cur = self.conn.cursor()
             if self.curIdx == 0:
                 cur.execute(query, (fullName, phoneNum, email, address))
             else:
-                cur.execute(query, ())
+                cur.execute(query, (fullName, phoneNum, email, address, self.curIdx))
 
             self.conn.commit()
             self.conn.close()
