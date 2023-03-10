@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>640</width>
-    <height>480</height>
+    <height>616</height>
    </rect>
   </property>
   <property name="font">
@@ -34,17 +34,17 @@
        <property name="title">
         <string>정보입력</string>
        </property>
-       <widget class="QLineEdit" name="lineEdit_2">
+       <widget class="QLineEdit" name="txtPhone">
         <property name="geometry">
          <rect>
           <x>95</x>
           <y>50</y>
-          <width>151</width>
+          <width>231</width>
           <height>20</height>
          </rect>
         </property>
        </widget>
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="label_3">
         <property name="geometry">
          <rect>
           <x>31</x>
@@ -63,17 +63,17 @@
          <set>Qt::AlignJustify|Qt::AlignVCenter</set>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_3">
+       <widget class="QLineEdit" name="txtAddress">
         <property name="geometry">
          <rect>
           <x>95</x>
           <y>110</y>
-          <width>151</width>
+          <width>231</width>
           <height>20</height>
          </rect>
         </property>
        </widget>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="label_23">
         <property name="geometry">
          <rect>
           <x>30</x>
@@ -92,12 +92,12 @@
          <set>Qt::AlignJustify|Qt::AlignVCenter</set>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit_4">
+       <widget class="QLineEdit" name="txtEmail">
         <property name="geometry">
          <rect>
           <x>95</x>
           <y>80</y>
-          <width>151</width>
+          <width>231</width>
           <height>20</height>
          </rect>
         </property>
@@ -124,10 +124,10 @@
        <widget class="QPushButton" name="btnNew">
         <property name="geometry">
          <rect>
-          <x>420</x>
-          <y>110</y>
-          <width>75</width>
-          <height>23</height>
+          <x>510</x>
+          <y>70</y>
+          <width>80</width>
+          <height>30</height>
          </rect>
         </property>
         <property name="text">
@@ -138,9 +138,9 @@
         <property name="geometry">
          <rect>
           <x>510</x>
-          <y>110</y>
-          <width>75</width>
-          <height>23</height>
+          <y>100</y>
+          <width>80</width>
+          <height>30</height>
          </rect>
         </property>
         <property name="text">
@@ -171,9 +171,33 @@
          <rect>
           <x>95</x>
           <y>20</y>
-          <width>151</width>
+          <width>231</width>
           <height>20</height>
          </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="btnDel">
+        <property name="geometry">
+         <rect>
+          <x>510</x>
+          <y>30</y>
+          <width>80</width>
+          <height>30</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>NanumGothic</family>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 117, 119);
+color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>삭제</string>
         </property>
        </widget>
       </widget>
@@ -185,13 +209,29 @@
      <rect>
       <x>20</x>
       <y>159</y>
-      <width>601</width>
-      <height>271</height>
+      <width>602</width>
+      <height>402</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <widget class="QTableWidget" name="tableWidget"/>
+      <widget class="QTableWidget" name="tblAddress">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -202,7 +242,7 @@
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

@@ -71,7 +71,7 @@ class qtApp(QWidget):
             img_url = post['image']
 
             # 230308. 포스터 이미지 추가
-            if img_url != '':
+            if img_url != '':                       # 빈값이면 포스터가 없음
                 data = urlopen(img_url).read()      # 파이썬으로 2진 데이터 -네이버 영화에 있는 이미지 다운]
                 image = QImage()
                 image.loadFromData(data)
@@ -87,10 +87,10 @@ class qtApp(QWidget):
             # setItem(행, 열, 넣을 데이터)
             self.tblResult.setItem(i, 0, QTableWidgetItem(title))
             self.tblResult.setItem(i, 1, QTableWidgetItem(pubDate))        # link넣기
-            self.tblResult.setItem(i, 2, QTableWidgetItem(director))        # link넣기
-            self.tblResult.setItem(i, 3, QTableWidgetItem(actor))        # link넣기
-            self.tblResult.setItem(i, 4, QTableWidgetItem(userRating))        # link넣기
-            self.tblResult.setItem(i, 5, QTableWidgetItem(link))        # link넣기
+            self.tblResult.setItem(i, 2, QTableWidgetItem(director))        
+            self.tblResult.setItem(i, 3, QTableWidgetItem(actor))        
+            self.tblResult.setItem(i, 4, QTableWidgetItem(userRating))        
+            self.tblResult.setItem(i, 5, QTableWidgetItem(link))        
             self.tblResult.setItem(i, 6, QTableWidgetItem(img_url))
             if img_url != '':
                 self.tblResult.setCellWidget(i, 6, imgLabel)

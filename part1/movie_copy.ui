@@ -2,6 +2,12 @@
 <ui version="4.0">
  <class>FrmMain</class>
  <widget class="QWidget" name="FrmMain">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -30,11 +36,11 @@
   </property>
   <property name="font">
    <font>
-    <family>NanumBarunGothic</family>
+    <family>나눔고딕</family>
    </font>
   </property>
   <property name="windowTitle">
-   <string>네이버API 영화검색</string>
+   <string>네이버API 영화검색앱</string>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
@@ -55,21 +61,25 @@
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>20</y>
-         <width>721</width>
-         <height>41</height>
+         <y>24</y>
+         <width>731</width>
+         <height>31</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QLabel" name="label">
           <property name="text">
-           <string>검색어 : </string>
+           <string>영화명 : </string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="txtSearch"/>
+         <widget class="QLineEdit" name="txtSearch">
+          <property name="inputMethodHints">
+           <set>Qt::ImhNone</set>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="btnSearch">
@@ -88,14 +98,20 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>90</y>
+     <y>89</y>
      <width>781</width>
      <height>401</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="resultLayout">
     <item>
-     <widget class="QTableWidget" name="tblResult"/>
+     <widget class="QTableWidget" name="tblResult">
+      <property name="font">
+       <font>
+        <family>나눔고딕</family>
+       </font>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
