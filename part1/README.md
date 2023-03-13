@@ -32,5 +32,19 @@
 ![주소록앱1]<img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/a9084e266bcfa7acdd1a6c1d70b3d5ec4b821138/part1/KakaoTalk_20230309_103100147.png" width="780" />
 ![주소록앱2]<img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/a9084e266bcfa7acdd1a6c1d70b3d5ec4b821138/part1/KakaoTalk_20230309_103100147.png" width="780" />
 
+## 파이썬 관련 추가학습
+- QR코드 생성 앱
+  - qrcode 모듈
+  - PyQt
+![QR코드앱]<img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/a9084e266bcfa7acdd1a6c1d70b3d5ec4b821138/part1/qrcodeApp.png" width="780" />
+
+- 컴퓨터 정보출력 앱
+  - psutil 모듈
+  - socket 모듈
+  - requests 모듈
+  - PyQt
+![컴퓨터정보앱]<img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/a9084e266bcfa7acdd1a6c1d70b3d5ec4b821138/part1/comInfoApp.png" width="780" />
+
+
 ## 미니프로젝트 실습
 
