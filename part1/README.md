@@ -44,6 +44,14 @@
   - PyQt
 <img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/main/part1/studyPython/comInfoApp.png" />
 
+- TTS(Text To Speech)
+  - gtts 모듈
+  - playsound 모듈
+
+- 암호해제 프로그램
+  - itertools, zipfile 기본모듈
+  
+
 
 ## 미니프로젝트 실습
 
