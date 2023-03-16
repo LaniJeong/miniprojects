@@ -54,6 +54,7 @@
   
 - 쓰레드 사용법
   - GUI와 처리시간이 긴 로직을 실행하면 반드시 쓰레드 사용
+<img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/main/part1/thread.png" />
 
 - 이메일 전송, 대량메일 전송
 
