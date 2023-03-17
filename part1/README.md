@@ -60,6 +60,7 @@
 - 이메일 전송, 대량메일 전송
 
 - PyGame
+<img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/main/part1/PyGame.png" width="780" />
 
 
 ## 미니프로젝트 실습
