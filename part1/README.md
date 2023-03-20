@@ -75,7 +75,7 @@
 - 계산기 앱
   - PyQt
   - 16개 signal을 1개의 slot함수로 처리
-<img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/main/part1/folium.png" width="250" />
+<img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/main/part1/studyPyQt/calculator.png" width="250" />
 
 
 
