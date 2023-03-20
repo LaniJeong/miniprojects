@@ -59,7 +59,9 @@
 
 - 이메일 전송, 대량메일 전송
 
-- PyGame
+- 게임 만들기 : DinoRun
+  - PyGame
+<img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/main/part1/pyGame2.png" width="780" />
 <img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/main/part1/PyGame.png" width="780" />
 
 
