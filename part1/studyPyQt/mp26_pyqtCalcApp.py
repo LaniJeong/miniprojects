@@ -41,7 +41,7 @@ class qtApp(QWidget):
             try:
                 result = eval(self.text_value.lstrip('0'))
                 print(round(result, 4))     # 10/6 
-                self.txt_view.setText(str(result, 4))
+                self.txt_view.setText(str(round(result, 4)))
             except:
                 self.txt_view.setText('ERROR')
         else:
