@@ -64,6 +64,20 @@
 <img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/main/part1/studyPyGame/pyGame2.png" width="780" />
 <img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/main/part1/PyGame.png" width="780" />
 
+게임화면
+- 전국 대학교 위치맵
+  - Pandas
+  - folium
+  - PyQt
+    - QWebEnginView 추가
+<img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/main/part1/folium.png" width="780" />
+
+- 계산기 앱
+  - PyQt
+  - 16개 signal을 1개의 slot함수로 처리
+<img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/main/part1/folium.png" width="250" />
+
+
 
 ## 미니프로젝트 실습
 - 키오스크 앱 만들기
