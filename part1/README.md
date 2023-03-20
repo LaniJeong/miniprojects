@@ -61,7 +61,7 @@
 
 - 게임 만들기 : DinoRun
   - PyGame
-<img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/main/part1/pyGame2.png" width="780" />
+<img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/main/part1/studyPyGame/pyGame2.png" width="780" />
 <img src ="https://raw.githubusercontent.com/LaniJeong/miniprojects/main/part1/PyGame.png" width="780" />
 
 
