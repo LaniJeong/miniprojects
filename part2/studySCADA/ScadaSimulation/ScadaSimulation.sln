@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MQTT Publishter", "MQTT Pub
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeIotDeviceApp", "FakeIotDeviceApp\FakeIotDeviceApp.csproj", "{239D4D7B-95C3-4321-BF98-2BF31860152A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHomeMonitoringApp", "SmartHomeMonitoringApp\SmartHomeMonitoringApp.csproj", "{AE401726-8272-4D02-9CDC-1C65B2184B76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{239D4D7B-95C3-4321-BF98-2BF31860152A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{239D4D7B-95C3-4321-BF98-2BF31860152A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{239D4D7B-95C3-4321-BF98-2BF31860152A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE401726-8272-4D02-9CDC-1C65B2184B76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE401726-8272-4D02-9CDC-1C65B2184B76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE401726-8272-4D02-9CDC-1C65B2184B76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE401726-8272-4D02-9CDC-1C65B2184B76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -34,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4B6A1725-123B-4E65-BF22-56E7B48F2C66} = {8DBDA3A4-482E-4A72-A7B5-6BF0012D9ACF}
 		{239D4D7B-95C3-4321-BF98-2BF31860152A} = {43BB72FA-AD1F-4531-8E05-6233FFE22556}
+		{AE401726-8272-4D02-9CDC-1C65B2184B76} = {AAD6ECD6-BBAB-4E2F-9D04-340A56E3AD07}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EBF1A2D8-6B89-40E4-84DE-1145A5D8873F}
