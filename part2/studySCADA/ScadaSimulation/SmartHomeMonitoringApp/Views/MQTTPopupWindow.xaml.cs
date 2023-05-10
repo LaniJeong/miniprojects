@@ -17,23 +17,25 @@ using System.Windows.Shapes;
 namespace SmartHomeMonitoringApp.Views
 {
     /// <summary>
-    /// MQTTPopupWindow.xaml에 대한 상호 작용 논리
+    /// MqttPopupWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class MQTTPopupWindow : MetroWindow
+    public partial class MqttPopupWindow : MetroWindow
     {
-        public MQTTPopupWindow()
+        public MqttPopupWindow()
         {
             InitializeComponent();
         }
-        // 버튼 클릭
+
+        // MQTT 접속 버튼클릭이벤트 핸들러
         private void BtnConnect_Click(object sender, RoutedEventArgs e)
         {
             Commons.BROKERHOST = TxtBrokerIp.Text;
-            Commons.MQTTTOPIC= TxtTopic.Text;
+            Commons.MQTTTOPIC = TxtTopic.Text;
 
-            this.DialogResult = true;
+            this.DialogResult = true; // 
             this.Close();
         }
+
         // 새 팝업 로드이벤트 핸들러
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
