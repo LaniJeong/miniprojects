@@ -4,21 +4,11 @@ using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 using uPLibrary.Networking.M2Mqtt;
 
 namespace FakeIotDeviceApp
@@ -28,10 +18,13 @@ namespace FakeIotDeviceApp
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        Faker<SensorInfo> FakeHomeSensor = null; // 가짜 스마트홈 센서값 변수
+        Faker<SensorInfo> FakeHomeSensor { get; set; } = null; // 가짜 스마트홈 센서값 변수
 
         MqttClient client { get; set; }
         Thread MqttThread { get; set; }
+
+        // MQTT Publish json 데이터 건수 체크변수
+        int MaxCount { get; set; } = 10;
 
         public MainWindow()
         {
@@ -86,6 +79,18 @@ namespace FakeIotDeviceApp
                         // RtbLog에 출력
                         RtbLog.AppendText($"{jsonValue}\n");
                         RtbLog.ScrollToEnd();
+                        MaxCount--;     // 뭐야
+                        if (MaxCount <= 0 )
+                        {
+                            RtbLog.SelectAll();
+                            RtbLog.Selection.Text = string.Empty;
+                            MaxCount = 50;
+                            RtbLog.AppendText(">>> 문서건수가 많아져서 초기화.\n");
+                        }
+                        // RtbLog에 출력
+                        RtbLog.AppendText($"{jsonValue}\n");
+                        RtbLog.ScrollToEnd();
+                        MaxCount--;
                     }));
 
                     // 1초동안 대기
