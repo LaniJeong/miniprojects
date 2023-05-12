@@ -1,27 +1,24 @@
-﻿using LiveCharts;
-using LiveCharts.Wpf;
+﻿using OxyPlot;
+using OxyPlot.Series;
 using MySql.Data.MySqlClient;
 using SmartHomeMonitoringApp.Logics;
-using SmartHomeMonitoringApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Ink;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OxyPlot.Legends;
 
 namespace SmartHomeMonitoringApp.Views
 {
@@ -74,24 +71,19 @@ namespace SmartHomeMonitoringApp.Views
         {
             bool isValid = true;
             string errorMsg = string.Empty;
-            DataSet ds = null;
+            DataSet ds = new DataSet();
 
             // 검색, 저장, 수정, 삭제 전 반드시 검증(Validation)
             if (CboRoomName.SelectedValue.ToString() == "SELECT")
             {
                 isValid = false;
                 errorMsg += "방구분을 선택하세요.\n";
-
-                await Commons.ShowCustomMessageAsync("검색", "방을 선택하세요.");
-                return;
             }
             // 시스템이 시작된 날짜보다 더 옛날 날짜로 검색하려면
             if (DateTime.Parse(DtpStart.Text) < DateTime.Parse(FirstSensingDate))
             {
                 isValid = false;
                 errorMsg += $"검색 시작일은 {FirstSensingDate}부터 가능합니다.\n";
-                await Commons.ShowCustomMessageAsync("검색", $"검색 시작일은 {FirstSensingDate}부터 가능합니다.");
-                return;
             }
 
             // 당일 이후의 날짜로 검색하려면
@@ -99,8 +91,6 @@ namespace SmartHomeMonitoringApp.Views
             {
                 isValid = false;
                 errorMsg += $"검색 종료일은 오늘까지 가능합니다.\n";
-                await Commons.ShowCustomMessageAsync("검색", $"검색 종료일은 오늘까지 가능합니다.");
-                return;
             }
 
             // 검색시작일이 검색종료일 이후면
@@ -108,8 +98,6 @@ namespace SmartHomeMonitoringApp.Views
             {
                 isValid = false;
                 errorMsg += $"검색 시작일이 검색 종료일보다 최신일 수 없습니다.\n";
-                await Commons.ShowCustomMessageAsync("검색", $"검색 시작일이 검색 종료일보다 최신일 수 없습니다.");
-                return;
             }
 
             if (isValid == false)
@@ -142,7 +130,6 @@ namespace SmartHomeMonitoringApp.Views
                     MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                     
                     adapter.Fill(ds, "smarthome_sensor");
-
                     //MessageBox.Show("TotlaData", ds.Tables["smarthomesensor"].Rows.Count.ToString());
                 }
 
@@ -152,15 +139,48 @@ namespace SmartHomeMonitoringApp.Views
                 await Commons.ShowCustomMessageAsync("DB검색", $"DB검색 오류 {ex.Message}");
             }
 
+            // Create the plot model    / 선택한 방의 이름이 타이틀로 나오도록
+            var tmp = new PlotModel { Title = $"{CboRoomName.SelectedValue.ToString()} ROOM", DefaultFont = "NanumGothic" };
+            var legend = new Legend
+            {
+                LegendBorder = OxyColors.DarkGray,
+                LegendBackground = OxyColor.FromArgb(150, 255, 255, 255),
+                LegendPosition = LegendPosition.TopRight,
+                LegendPlacement = LegendPlacement.Outside,
+            };
+            tmp.Legends.Add(legend);        // 범례 추가
+
+            // Create two line series (markers are hidden by default)
+            var tempSeries = new LineSeries {
+                Title = "Temperature(ºC)",
+                MarkerType = MarkerType.Circle,
+                Color = OxyColors.DarkOrange,       // 라인색상 온도는 주황색
+            };
+            var humidSeries = new LineSeries { 
+                Title = "Humidity(%)", 
+                MarkerType = MarkerType.Square,
+                Color = OxyColors.Aqua,             // 습도는 aqua
+            };
+
             // DB에서 가져온 데이터 차트에 뿌리도록 처리
             if (ds.Tables[0].Rows.Count > 0)
             {
+                TotalDataCount = ds.Tables[0].Rows.Count;
+
+                var count = 0;
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    Convert.ToDouble(row["Temp"]);
+                    tempSeries.Points.Add(new DataPoint(count++, Convert.ToDouble(row["Temp"])));
+                    humidSeries.Points.Add(new DataPoint(count++, Convert.ToDouble(row["Humid"])));
                 }
-
             }
+            tmp.Series.Add(tempSeries);
+            tmp.Series.Add(humidSeries);
+
+            OpvSmartHome.Model = tmp;
+
+            LblTotalCount.Content = $"검색데이터 {TotalDataCount}개";
+
         }
     }
 }

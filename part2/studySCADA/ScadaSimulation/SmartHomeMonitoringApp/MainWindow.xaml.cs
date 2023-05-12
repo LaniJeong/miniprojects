@@ -19,6 +19,7 @@ using MahApps.Metro.Controls.Dialogs;
 using SmartHomeMonitoringApp.Logics;
 using System.Security.AccessControl;
 using System.ComponentModel;
+using ControlzEx.Theming;
 
 namespace SmartHomeMonitoringApp
 {
@@ -27,9 +28,15 @@ namespace SmartHomeMonitoringApp
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        string DefaultTheme { get; set; } = "Light";    // 기본테마
+        string Defaultaccent { get; set; } = "Cobalt";  // 
+
         public MainWindow()
         {
             InitializeComponent();
+
+            ThemeManager.Current.ThemeSyncMode = ThemeSyncMode.SyncWithAppMode;
+            ThemeManager.Current.SyncTheme();
         }
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
@@ -110,9 +117,70 @@ namespace SmartHomeMonitoringApp
 
         private void MnuVisualizationMon_Click(object sender, RoutedEventArgs e)
         {
-
+            ActiveItem.Content = new Views.VisualizationControl();
+            StsSelScreen.Content = "Visualization View";
         }
 
+        private void MnuAbout_Click(object sender, RoutedEventArgs e)
+        {
+            var about = new About();
+            about.Owner = this;
+            about.ShowDialog();
+        }
+
+        // 모든 테마와 액센트를 전부 처리할 체크 이벤트 핸들러
+        private void MnuThemeAccent_Clicked(object sender, RoutedEventArgs e)
+        {
+            // 클릭되는 테마가 라이트인지 판단_라이트를 클릭하면 다크는 체크 해제, 다크를 클릭하면 라이트를 체크해제
+            Debug.WriteLine((sender as MenuItem).Header);
+            // 액센트도 체크를 하는 값을 나머지 액센트 전부 체크해제
+
+            switch ((sender as MenuItem).Header)
+            {
+                case "Light":
+                    MnuLightTheme.IsChecked = true;
+                    MnuDarkTheme.IsChecked = true;
+                    DefaultTheme = "Light";
+                    break;
+                case "Dark":
+                    MnuLightTheme.IsChecked = false;
+                    MnuDarkTheme.IsChecked= true;
+                    DefaultTheme = "Dark";
+
+                    break;
+                case "Amber":
+                    MnuAccentAmber.IsChecked = true;
+                    MnuAccentBlue.IsChecked = false;
+                    MnuAccentBrown.IsChecked = false;
+                    MnuAccentCobalt.IsChecked = false;
+                    DefaultTheme = "Amber";
+
+                    break;
+                case "Blue":
+                    MnuAccentAmber.IsChecked = false;
+                    MnuAccentBlue.IsChecked = true;
+                    MnuAccentBrown.IsChecked = false;
+                    MnuAccentCobalt.IsChecked = false;
+                    DefaultTheme = "Blue";
+                    break;
+                case "Brown":
+                    MnuAccentAmber.IsChecked = false;
+                    MnuAccentBlue.IsChecked = false;
+                    MnuAccentBrown.IsChecked = true;
+                    MnuAccentCobalt.IsChecked = false;
+                    DefaultTheme = "Brown";
+                    break;
+                case "Cobalt":
+                    MnuAccentAmber.IsChecked = false;
+                    MnuAccentBlue.IsChecked = false;
+                    MnuAccentBrown.IsChecked = false;
+                    MnuAccentCobalt.IsChecked = true;
+                    DefaultTheme = "Cobalt";
+                    break;
+            }
+
+            ThemeManager.Current.ChangeTheme(this, "Dark.Amber");
+        }
 
         
     }

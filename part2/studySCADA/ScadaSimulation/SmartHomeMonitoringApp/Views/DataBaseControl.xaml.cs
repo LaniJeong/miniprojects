@@ -20,6 +20,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using uPLibrary.Networking.M2Mqtt.Messages;
+using uPLibrary.Networking.M2Mqtt;
 
 namespace SmartHomeMonitoringApp.Views
 {
@@ -55,9 +56,9 @@ namespace SmartHomeMonitoringApp.Views
             if (Commons.MQTT_CLIENT != null && Commons.MQTT_CLIENT.IsConnected)
             {
                 IsConnected = true;
-                BtnConnDb.Content = 
+                BtnConnDb.Content = "MQTT 연결중";
                 BtnConnDb.IsChecked = true;
-                Commons.MQTT_CLIENT.MqttMsgPublishReceived += MQTT_CLIENT_MqttMsgPublishReceived1;
+                Commons.MQTT_CLIENT.MqttMsgPublishReceived += MQTT_CLIENT_MqttMsgPublishReceived;
             }
         }
 
@@ -67,17 +68,13 @@ namespace SmartHomeMonitoringApp.Views
             ConnectDB();
         }
 
-        private void MQTT_CLIENT_MqttMsgPublishReceived1(object sender, MqttMsgPublishEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
 
         private void ConnectDB()
         {
             if (IsConnected == false)
             {
                 // Mqtt 브로커 생성
-                Commons.MQTT_CLIENT = new uPLibrary.Networking.M2Mqtt.MqttClient(Commons.BROKERHOST);
+                Commons.MQTT_CLIENT = new MqttClient(Commons.BROKERHOST);
 
                 try
                 {
@@ -165,7 +162,7 @@ namespace SmartHomeMonitoringApp.Views
                     using (MySqlConnection conn = new MySqlConnection(Commons.MYSQL_CONNSTRING))
                     {
                         if (conn.State == System.Data.ConnectionState.Closed) conn.Open();
-                        string insQuery = @"INSERT INTO smarthomesensor
+                        string insQuery = @"INSERT INTO smarthome_sensor
                                             (Home_Id,
                                              Room_Name,
                                              Sensing_DateTime,
@@ -200,6 +197,11 @@ namespace SmartHomeMonitoringApp.Views
                     UpdateLog($"!!! DB Erorr 발생 : {ex.Message}");
                 }
             }
+        }
+
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
